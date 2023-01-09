@@ -4,7 +4,7 @@ import ContactForm from './ContactForm';
 import ContactList from './ContactList';
 import { Title, Subtitle, Container } from './App.style';
 
-const LS_KEY = 'contacts';
+const KEY = 'contacts';
 
 export class App extends React.Component {
   state = {
@@ -18,15 +18,15 @@ export class App extends React.Component {
   };
 
   componentDidMount() {
-    const dataNumbers = localStorage.getItem(LS_KEY);
+    const contactsNumber = localStorage.getItem(KEY);
 
-    if (dataNumbers) {
-      this.setState({ contacts: JSON.parse(dataNumbers) });
+    if (contactsNumber) {
+      this.setState({ contacts: JSON.parse(contactsNumber) });
     }
   }
 
   componentDidUpdate() {
-    localStorage.setItem(LS_KEY, JSON.stringify(this.state.contacts));
+    localStorage.setItem(KEY, JSON.stringify(this.state.contacts));
   }
 
   handlerSubmit = data => {
